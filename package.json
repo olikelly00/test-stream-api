@@ -1,0 +1,20 @@
+{
+  "name": "streaming-api",
+  "type": "module",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^4.0.0",
+    "eventsource-parser": "^1.1.1",
+    "koa": "^2.14.2",
+    "koa-body-parser": "^1.1.2",
+    "web-streams-polyfill": "^3.2.1"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
