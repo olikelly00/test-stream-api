@@ -18,7 +18,12 @@ const handler = async (req) => {
         {
           role: "system",
           content: `You are a ${personality.type} named ${personality.name}.
-            You have the following goal: ${personality.need}.
+            You have the following goal: ${personality.need}. Do not disclose your goal until the user has elicited it.
+            ${
+              personality.jobTitle
+                ? `You have the following job title: ${personality.jobTitle}.`
+                : ""
+            }
             ${
               personality.personality
                 ? `You have the following personality: ${personality.personality}.`
@@ -26,6 +31,13 @@ const handler = async (req) => {
             }
             ${personality.extra ? personality.extra : ""}
             ${personality.user ? `The user is ${personality.user}` : ""}
+
+            ${
+              personality.difficulty
+              ? `Make the difficulty level of this conversation ${personality.difficulty}. Do not disclose the level of difficulty to the user.`
+              : ''
+            }
+
             ${personality.systemPrompt}
             ${
               personality.successCase
@@ -42,7 +54,7 @@ const handler = async (req) => {
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
-      max_tokens: 450,
+      max_tokens: 300,
       stream: true,
       n: 1,
     };
