@@ -20,7 +20,7 @@ export function messageText(message) {
   if(message.attachments?.length > 0) {
     const attachment = message.attachments[0]
 
-    return `${ message.text } I recommend ${attachment.title} ${attachment.summary} ${attachment.detail}. What do you think?`
+    return `${ message.text } I recommend ${attachment.title} ${attachment.summary} ${attachment.detail}.${ attachment.information?.length > 0 ? `Here's the full information: ${attachment.information}.` : '' } What do you think?`
   }
 
   return message.text
